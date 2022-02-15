@@ -1,0 +1,60 @@
+{
+	"name": "HPA",
+	"title": "Human Protein Atlas",
+	"description": "The Human Protein Atlas is a Swedish-based program initiated in 2003 with the aim to map all the human proteins in cells, tissues and organs using an integration of various omics technologies, including antibody-based imaging, mass spectrometry-based proteomics, transcriptomics and systems biology. All the data in the knowledge resource is open access to allow scientists both in academia and industry to freely access the data for exploration of the human proteome.",
+	"reference URL": "https://www.proteinatlas.org/",
+	"version": "0.1",
+	"maintainer":"Liesbeth François <liesbeth.francois@ucb.com>",
+	"source files": [
+		{
+			"name":"proteinatlas.tsv.zip",
+			"URL template":"https://www.proteinatlas.org/download/proteinatlas.tsv.zip",
+			"remote update frequency": {
+				"value": 0.01,
+				"units": "1/year"
+			}
+		},
+				{
+			"name":"transcript_rna_tissue.tsv.zip",
+			"URL template":"https://www.proteinatlas.org/download/transcript_rna_tissue.tsv.zip",
+			"remote update frequency": {
+				"value": 0.01,
+				"units": "1/year"
+			}
+		},
+				{
+			"name":"transcript_rna_mousebrain.tsv.zip",
+			"URL template":"https://www.proteinatlas.org/download/transcript_rna_mousebrain.tsv.zip",
+			"remote update frequency": {
+				"value": 0.01,
+				"units": "1/year"
+			}
+		},
+				{
+			"name":"gene_brain_enriched.tsv",
+			"URL template":"https://www.proteinatlas.org/search/tissue_category_rna%3Abrain%3BTissue+enriched+AND+sort_by%3Atissue+specific+score?format=tsv",
+			"remote update frequency": {
+				"value": 0.01,
+				"units": "1/year"
+			}
+		},
+				{
+			"name":"gene_brain_enhanced.tsv",
+			"URL template":"https://www.proteinatlas.org/search/tissue_category_rna%3Abrain%3BTissue+enriched%2CGroup+enriched%2CTissue+enhanced+AND+sort_by%3Atissue+specific+score?format=tsv",
+			"remote update frequency": {
+				"value": 0.01,
+				"units": "1/year"
+			}
+		},
+				{
+			"name":"gene_brain_specific.tsv",
+			"URL template":"https://www.proteinatlas.org/search/tissue_category_rna%3Abrain%3BDetected+in+single?format=tsv",
+			"remote update frequency": {
+				"value": 0.01,
+				"units": "1/year"
+			}
+		}
+		
+		
+	]
+}

@@ -1,0 +1,30 @@
+{
+	"$schema":"TKCat_BE_collection_1.0",
+	"$id":"HPA_BE_1.0", 
+	"collection":"BE",
+	"resource":"HPA",
+	"tables":[
+		{
+			"name":"HPA_protein_atlas",
+			"fields":{
+				"be": {
+					"static":true,
+					"value":"Gene"
+				},
+				"source": {
+					"static":true,
+					"value":"Ens_gene"
+				},
+				"identifier": {
+					"static":true,
+					"value":"Ensembl"
+				},
+				"organism": {
+					"static": true,
+					"value": "Homo sapiens",
+					"type": "Scientific name"
+				}
+			}
+		}
+	]
+}

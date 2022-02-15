@@ -1,0 +1,247 @@
+{
+  "HPA_gene_brain_expression": {
+    "tableName": ["HPA_gene_brain_expression"],
+    "fields": [
+      {
+        "name": "Gene",
+        "type": "character",
+        "nullable": false,
+        "unique": false,
+        "comment": "Gene symbol"
+      },
+      {
+        "name": "Ensembl",
+        "type": "character",
+        "nullable": false,
+        "unique": false,
+        "comment": "Gene ensembl identifier"
+      },
+      {
+        "name": "Uniprot",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Uniprot identifier"
+      },
+      {
+        "name": "Protein class",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": ""
+      },
+      {
+        "name": "Biological process",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Assigned by GO"
+      },
+      {
+        "name": "Molecular function",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Assigned by GO"
+      },
+      {
+        "name": "RNA tissue specificity",
+        "type": "integer",
+        "nullable": true,
+        "unique": false,
+        "comment": "mRNA tissue expression information across tissues obtained from HPA.\n-\tEnriched: NX level in a particular tissue/region/cell type at least four times any other tissue/region/cell type \n-\tGroup enriched: NX levels of a group (of 2-5 tissues or 2-10 cell types or 2-5 brain regions) at least four times any other tissue/region/cell type\n-\tEnhanced: NX levels of a group (of 1-5 tissues or 1-10 cell types or 1-5 brain regions) at least four times the mean of other tissue/region/cell types\n-\tLow specificity: NX ≥ 1 in at least one tissue/region/cell type but not elevated in any tissue/region/cell type\n-\tNot detected: NX < 1 in all tissue/cell/region types\n"
+      },
+      {
+        "name": "RNA tissue distribution",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "mRNA tissue expression distribution across tissues obtained from HPA.\n-\tDetected in single: Detected in a single region\n-\tDetected in some: Detected in more than one but less than one third of regions\n-\tDetected in many: Detected in at least a third but not all regions\n-\tDetected in all: Detected in all regions\n-\tNot detected: NX <1 in all regions\n"
+      },
+      {
+        "name": "RNA brain regional specificity",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "mRNA tissue expression information in brain regions obtained from HPA.\n-\tEnriched: NX level in a particular tissue/region/cell type at least four times any other tissue/region/cell type \n-\tGroup enriched: NX levels of a group (of 2-5 tissues or 2-10 cell types or 2-5 brain regions) at least four times any other tissue/region/cell type\n-\tEnhanced: NX levels of a group (of 1-5 tissues or 1-10 cell types or 1-5 brain regions) at least four times the mean of other tissue/region/cell types\n-\tLow specificity: NX ≥ 1 in at least one tissue/region/cell type but not elevated in any tissue/region/cell type\n-\tNot detected: NX < 1 in all tissue/cell/region types\n"
+      },
+      {
+        "name": "RNA brain regional distribution",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "mRNA tissue expression distribution in brain regions obtained from HPA.\n-\tDetected in single: Detected in a single region\n-\tDetected in some: Detected in more than one but less than one third of regions\n-\tDetected in many: Detected in at least a third but not all regions\n-\tDetected in all: Detected in all regions\n-\tNot detected: NX <1 in all regions\n"
+      },
+      {
+        "name": "Subcellular location",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Predicted location is derived from HPA: “all transcripts of all genes have been analyzed regarding the location(s) of corresponding protein based on prediction methods for signal peptides and transmembrane regions”."
+      },
+      {
+        "name": "Subcellular main location",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Predicted location is derived from HPA: “all transcripts of all genes have been analyzed regarding the location(s) of corresponding protein based on prediction methods for signal peptides and transmembrane regions”."
+      },
+      {
+        "name": "Subcellular additional location",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Predicted location is derived from HPA: “all transcripts of all genes have been analyzed regarding the location(s) of corresponding protein based on prediction methods for signal peptides and transmembrane regions”."
+      },
+      {
+        "name": "Secretome location",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "The combined results from analyses of the membrane proteome and the secretome were used to map the distribution of potential membrane proteins and secreted proteins in the human proteome"
+      },
+      {
+        "name": "type",
+        "type": "character",
+        "nullable": false,
+        "unique": false,
+        "comment": "Defining the category of elevated brain expression: brain_enriched_expression\n(Tissue enriched: At least four-fold higher mRNA level in brain compared to any other tissues or Group enriched: At least four-fold higher average mRNA level in a group of 2-5 tissues compared to any other tissue.genes), brain_enhanced_expression (genes have an elevated expression in the brain compared to other tissue types, combination fo tissue enriched, group enriched and tissue enhanced), and/or brain_specific_expression (genes expressed in the brain are selectively detected in the brain compared to all other tissues)."
+      }
+    ],
+    "indexes": {},
+    "display": {
+      "x": [-145],
+      "y": [164],
+      "color": ["#F67FC4"],
+      "comment": ["The brain elevated genes, comparing brain to other organs and tissue types"]
+    },
+    "foreignKeys": [
+      {
+        "refTable": ["HPA_protein_atlas"],
+        "key": [
+          {
+            "from": "Ensembl",
+            "to": "Ensembl"
+          }
+        ],
+        "cardinality": [0, -1, 1, 1]
+      }
+    ]
+  },
+  "HPA_protein_atlas": {
+    "tableName": ["HPA_protein_atlas"],
+    "fields": [
+      {
+        "name": "Gene",
+        "type": "character",
+        "nullable": false,
+        "unique": false,
+        "comment": "Gene name"
+      },
+      {
+        "name": "Ensembl",
+        "type": "character",
+        "nullable": false,
+        "unique": true,
+        "comment": "Ensembl identified"
+      },
+      {
+        "name": "Uniprot",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Uniprot identifier"
+      },
+      {
+        "name": "Protein class",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Class of proteins as assigned by Uniprot"
+      },
+      {
+        "name": "Biological process",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Biological process identifier assigned by GO"
+      },
+      {
+        "name": "Molecular function",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Molecular function assigned by GO"
+      },
+      {
+        "name": "RNA tissue specificity",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "RNA tissue specific expression across tissues obtained from HPA.\n- Enriched: NX level in a particular tissue/region/cell type at least four times any other tissue/region/cell type\n- Group enriched: NX levels of a group (of 2-5 tissues or 2-10 cell types or 2-5 brain regions) at least four times any other tissue/region/cell type\n- Enhanced: NX levels of a group (of 1-5 tissues or 1-10 cell types or 1-5 brain regions) at least four times the mean of other tissue/region/cell types\n- Low specificity: NX ≥ 1 in at least one tissue/region/cell type but not elevated in any tissue/region/cell type\n- Not detected: NX < 1 in all tissue/cell/region types"
+      },
+      {
+        "name": "RNA tissue distribution",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "mRNA tissue expression distribution across brain regions obtained from HPA.\n- Detected in single: Detected in a single region\n- Detected in some: Detected in more than one but less than one third of regions\n- Detected in many: Detected in at least a third but not all regions\n- Detected in all: Detected in all regions\n- Not detected: NX <1 in all regions"
+      },
+      {
+        "name": "RNA brain regional specificity",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Brain specificity: mRNA tissue expression information in brain regions obtained from HPA.\n-\tEnriched: NX level in a particular tissue/region/cell type at least four times any other tissue/region/cell type \n-\tGroup enriched: NX levels of a group (of 2-5 tissues or 2-10 cell types or 2-5 brain regions) at least four times any other tissue/region/cell type\n-\tEnhanced: NX levels of a group (of 1-5 tissues or 1-10 cell types or 1-5 brain regions) at least four times the mean of other tissue/region/cell types\n-\tLow specificity: NX ≥ 1 in at least one tissue/region/cell type but not elevated in any tissue/region/cell type\n-\tNot detected: NX < 1 in all tissue/cell/region types\n"
+      },
+      {
+        "name": "RNA brain regional distribution",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Brain distribution: mRNA tissue expression distribution in brain regions obtained from HPA.\n-\tDetected in single: Detected in a single region\n-\tDetected in some: Detected in more than one but less than one third of regions\n-\tDetected in many: Detected in at least a third but not all regions\n-\tDetected in all: Detected in all regions\n-\tNot detected: NX <1 in all regions"
+      },
+      {
+        "name": "Subcellular location",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Predicted location is derived from HPA: “all transcripts of all genes have been analyzed regarding the location(s) of corresponding protein based on prediction methods for signal peptides and transmembrane regions”."
+      },
+      {
+        "name": "Secretome location",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "The combined results from analyses of the membrane proteome and the secretome were used to map the distribution of potential membrane proteins and secreted proteins in the human proteome (from HPA)"
+      },
+      {
+        "name": "Subcellular main location",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Predicted location is derived from HPA: “all transcripts of all genes have been analyzed regarding the location(s) of corresponding protein based on prediction methods for signal peptides and transmembrane regions”."
+      },
+      {
+        "name": "Subcellular additional location",
+        "type": "character",
+        "nullable": true,
+        "unique": false,
+        "comment": "Predicted location is derived from HPA: “all transcripts of all genes have been analyzed regarding the location(s) of corresponding protein based on prediction methods for signal peptides and transmembrane regions”."
+      }
+    ],
+    "indexes": [
+      {
+        "fields": ["Ensembl"],
+        "unique": [true]
+      }
+    ],
+    "display": {
+      "x": [-21],
+      "y": [-100],
+      "color": ["#DFFB86"],
+      "comment": ["All available information from Human Protein Atlas "]
+    },
+    "primaryKey": ["Ensembl"]
+  }
+}
